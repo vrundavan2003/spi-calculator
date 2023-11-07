@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .register {
+	        background: #464745;
+	        border-radius: 6px;
+	        width: 150px;
+	        height: 50px;
+	        border: none;
+	        margin: 6px 0 5px 0px;
+	        cursor: pointer;
+	        color: #fff;
+	        font-size: 16px;
+        }
+        input{
+	        width: 75%;
+            padding: 10px 10px;
+            margin: 10px 32px;
+            border: 1px solid #ada8a8;
+            border-radius: 50px;
+            font-size: 16px;
+            color: #333;
+        }
+        #div1  {
+	        background: #e5e5e5;
+	        width: 350px;
+	        border-radius: 15px;
+	        margin: 65px 37% 65px 37%;
+	        position: relative;
+	        box-shadow: 0px 0px 15px 15px #666 ;
+            text-align: center;
+            padding: 10px;
+        }
+        .main {
+	        width: 100%;
+	        margin:  0 auto;
+	        justify-content: center;
+	        align-items: center;
+        }
+        p{
+            margin: -40px 25% -40px 58%;
+        }
+        @media screen and (max-width: 900px) {
+	        #div1{
+		        margin: 200px 68px;
+                width: 250px;
+                padding: 2px;
+	        }
+	        input {
+		        width: 75%;
+                padding: 2px 10px;
+                margin: 10px;
+	        }
+            .register {
+                width: 120px;
+	            height: 40px;
+            }
+            p{
+                margin: -170px 15% -170px 55%;
+            }
+        }
+    </style>
+</head>
+<body class="main">
+    <div id="div1">
+        <h1>Enter your marks</h1>
+        <form>
+            <input type="text" id="dm" placeholder="-  DM" maxlength='2' required>
+            <input type="text" id="fsd" placeholder="-  FSD-2" maxlength="2" required>
+            <input type="text" id="toc" placeholder="-  TOC" maxlength="2" required>
+            <input type="text" id="coa" placeholder="-  COA" maxlength="2" required>
+            <input type="text" id="python" placeholder="-  FCSP-2" maxlength="2" required>
+            <h2 id="spi"></h2>
+            <button type="button" class="register" onclick="calculate()">Submit</button>
+            <!-- <p>-vrundavan patel</p> -->
+        </form>
+    </div>
+    <p>-vrundavan patel</p>
+    <script>
+        function calculate(){        
+            var x1 = document.getElementById('dm').value;
+            var x2 = document.getElementById('fsd').value;
+            var x3 = document.getElementById('toc').value;
+            var x4 = document.getElementById('coa').value;
+            var x5 = document.getElementById('python').value;
+            var marks = [x1,x2,x3,x4,x5];
+            for(i=0;i<marks.length;i++){
+                temp = marks[i];
+                temp2 = temp%10;
+                if(temp2<5){
+                    marks[i] = Math.floor(temp/10) + 0.5;
+                }
+                else{
+                    marks[i] = Math.ceil(temp/10);
+                }
+                total = (marks[0]*4 + marks[1]*6 + marks[2]*5 + marks[3]*5 + marks[4]*5);
+            }
+            spi = total/25;
+            document.getElementById('spi').innerHTML = 'spi'+' '+' = '+' '+ spi;
+        }
+    </script>
+</body>
+</html>
